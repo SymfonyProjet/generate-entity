@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Animal : {{ animal.nom }}
+{% endblock %}
+
+{% block body %}
+	<div class="container col-md-4 mt-5">
+		<div class="card mb-4">
+			<h3 class="card-header text-center">
+                <strong>{{ animal.nom }}</strong> 
+            </h3>
+			<img src="{{ asset('images/animaux/' ~ animal.image) }}" alt="{{ animal.nom }}">
+			<div class="card-body">
+                <h5 class="card-text bg-secondary text-light text-center my-2 w-50 mx-auto rounded">
+                    Informations
+                </h5>
+				<p class="card-text">{{ animal.description }}</p>
+                <hr class="w-50">
+				<p class="card-text">
+                   <strong>Poids de l'animal :</strong>  {{ animal.poids }} kg
+                </p>
+                {% if animal.carnivore %}
+				    <p class="card-text">
+                        <strong>Régime alimentaire :</strong> Je suis un carnivore !
+                    </p>
+                {% else %}
+				    <p class="card-text">
+                       <strong>Régime alimentaire :</strong> Je mange de tout !
+                    </p>
+                {% endif %}
+                <div class="d-flex align-items-center">
+                   <i class="fas fa-globe-europe fa-3x"></i>
+                    <p class="card-text ml-2">
+                        {{ animal.habitat }}
+                    </p> 
+                </div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

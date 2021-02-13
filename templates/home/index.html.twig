@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center my-5">Bienvenue sur ZooLand</h1>
+	<p class="text-center">Sur cette page, vous retrouverez l'ensemble des animaux de notre zoo virtuel !</p>
+
+	{% for animal in animaux %}
+		<a href="{{ path('show_animal', { id : animal.id }) }}">
+			<div class="container col-md-4 mt-5">
+				<div class="card mb-4">
+					<h3 class="card-header">{{ animal.nom }}</h3>
+					<img src="{{ asset('images/animaux/' ~ animal.image) }}" alt="{{ animal.nom }}">
+					<div class="card-body">
+						<p class="card-text">{{ animal.description }}</p>
+					</div>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+{% endblock %}
